@@ -1,3 +1,7 @@
+# george's hacks
+
+Make start up really fast.  Disable OLED, Bluetooth, AUTO-OFF.  Enable AUTO RANGING by default.
+
 # CurrentRanger
 Precision auto-ranging current meter (ammeter)
 

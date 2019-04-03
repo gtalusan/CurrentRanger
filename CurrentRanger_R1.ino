@@ -31,7 +31,7 @@
 char rangeUnit = 'm';
 uint32_t lastInteraction=0;
 //***********************************************************************************************************
-#define LDO_OUTPUT             3.3 //volts, change to actual LDO output (measure GND-3V on OLED header)
+#define LDO_OUTPUT             3.310 //volts, change to actual LDO output (measure GND-3V on OLED header)
 //***********************************************************************************************************
 #define SENSE_OUTPUT           A3
 #define SENSE_GNDISO           A2
@@ -63,13 +63,13 @@ uint32_t lastInteraction=0;
 #define AUTORANGING_EN
 #define MODE_MANUAL 0
 #define MODE_AUTORANGE 1
-#define STARTUP_MODE        MODE_MANUAL //MODE_AUTORANGE
+#define STARTUP_MODE        MODE_AUTORANGE
 #define SWITCHDELAY_UP      8 //ms
 #define SWITCHDELAY_DOWN    8 //ms
 #define RANGE_SWITCH_THRESHOLD_HIGH ADC_OVERLOAD //ADC's 12bit value
 #define RANGE_SWITCH_THRESHOLD_LOW  0
 //***********************************************************************************************************
-#define OLED_EN
+//#define OLED_EN
 #ifdef OLED_EN
   #include <Wire.h>
   //i2c scanner: https://playground.arduino.cc/Main/I2cScanner
@@ -96,10 +96,10 @@ Adafruit_FreeTouch qt[3] = {
 #define NA_NOT_PRESSED  qt[0].measure()<TOUCH_HIGH_THRESHOLD
 //***********************************************************************************************************
 #define SERIALBAUD 230400      //Serial baud for HC-06 bluetooth output
-#define BT_EN
+//#define BT_EN
 #define BT_OUTPUT_AMPS        //ADC | AMPS | NANOS Change format of bluetooth data
 #define BT_REFRESH_INTERVAL 200 //ms
-#define AUTOFF_EN
+//#define AUTOFF_EN
 #ifdef AUTOFF_EN
 #define AUTOFF_INTERVAL 600000 //turn unit off after 10min of inactivity
 #endif
