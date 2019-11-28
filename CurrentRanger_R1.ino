@@ -107,7 +107,10 @@ Adafruit_FreeTouch qt[3] = {
 int offsetCorrectionValue = 0;
 uint16_t gainCorrectionValue = 0;
 byte calibrationPerformed=false;
+#define BT_EN
+#ifdef BT_EN
 byte BT_found=false;
+#endif
 
 void setup() {
   SerialUSB.begin(1); //USB hyper speed, baud wont matter
@@ -185,6 +188,7 @@ void setup() {
   }
 #endif
 
+#ifdef BT_EN
   //BT check
   Serial.begin(SERIALBAUD);
   SerialUSB.print("Bluetooth AT check @");SerialUSB.print(SERIALBAUD);SerialUSB.print("baud...");
@@ -216,6 +220,7 @@ void setup() {
   
     SerialUSB.print(BT_found?"OK!":"No response.");
   }
+#endif
 
   //rangeMA(); //done in bootloader
   WDTset();
@@ -285,6 +290,7 @@ void loop()
   }
 #endif
 
+#ifdef BT_EN
   if (BT_found && millis() - btInterval > BT_REFRESH_INTERVAL) //refresh rate (ms)
   {
     btInterval = millis();
@@ -298,6 +304,7 @@ void loop()
     Serial.println(VOUT * (RANGE_NA ? 1 : RANGE_UA ? 1000 : 1000000));
 #endif
   }
+#endif
 
   if (OLED_found && millis() - oledInterval > OLED_REFRESH_INTERVAL) //refresh rate (ms)
   {
